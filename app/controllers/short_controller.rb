@@ -1,7 +1,11 @@
 class ShortController < ApplicationController
   def create
 	  	@value=params[:text]
-	 	render json: params
+	  	u=Url.new
+	  	u.longurl=@value
+	  	u.shorturl="aravinth"
+	  	u.save
+	 	render :json => u 
   end
   
 end

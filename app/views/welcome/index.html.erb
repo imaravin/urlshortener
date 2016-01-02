@@ -20,11 +20,9 @@
 <script type="text/javascript">
 	
     $('.btn').click(function(){
-    	if($('input').val()==='')
-    	alert("eeee");
-    	else
+    	if($('input').val())
     	$.getJSON('http://localhost:3000/short/create?text='+$('input').val(),function(result){    	
-    	$('#sol').text(result['text']);
+    	$('#sol').text(result['shorturl']);
     	});
     	
     });
