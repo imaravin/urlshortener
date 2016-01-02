@@ -3,12 +3,12 @@
 	URL Shortener
 </div>
 	<div class="input-group">
-		  	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-		  		  <input type="text" class="form-control" id="url">
-		  	</div>
-	    	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-	    		<button class="input-group-addon btn btn-primary">short</button>
-	    	</div>
+		  	
+		  		  <input type="text" class="form-control" ="url">
+		  	 
+	    	
+	    		<div class="input-group-addon btn btn-primary">short</div>
+	    	
 	</div>
 </div>
 <br>
@@ -20,7 +20,13 @@
 <script type="text/javascript">
 	
     $('.btn').click(function(){
-    	console.log($('#url').attr("text"));
+    	if($('input').val()==='')
+    	alert("eeee");
+    	else
+    	$.getJSON('http://localhost:3000/short/create?text='+$('input').val(),function(result){    	
+    	$('#sol').text(result['text']);
+    	});
+    	
     });
 
 
