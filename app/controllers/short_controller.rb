@@ -5,30 +5,20 @@ class ShortController < ApplicationController
 	  	@value=params[:text]
 	  	u=Url.new
 	  	u.longurl=@value
-	  	link=@value
-	  	u.shorturl=bijective_encode()
+	  	
+	  	tmp=""
+	  	while true
+	  		tmp=(0...6).map { (["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]).to_a[rand(52)] }.join
+	  		if Url.find_by(shorturl:tmp)==nil
+	  			then
+	  			break
+	  		end
+	  	end
+	  	u.shorturl=tmp;
+
 	  	u.save
 	 	render :json => u 
   end
 
-	  def bijective_encode(i)
-	   
-			  return ALPHABET[0] if i == 0
-			  s = ''
-			  base = ALPHABET.length
-			  while i > 0
-			    s << ALPHABET[i.modulo(base)]
-			    i /= base
-			  end
-			  s.reverse
-	  end
-
-
-		def bijective_decode(s)
-		  i = 0
-		  base = ALPHABET.length
-		  s.each_char { |c| i = i * base + ALPHABET.index(c) }
-		  i
-		end
   
 end
