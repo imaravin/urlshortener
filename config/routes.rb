@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  get '/:id' => 'short#redirect',  id: /([A-Za-z]){6}/
+
+
   root 'welcome#index'
 
   # Example of regular route:

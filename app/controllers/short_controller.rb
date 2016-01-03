@@ -19,6 +19,13 @@ class ShortController < ApplicationController
 	  	u.save
 	 	render :json => u 
   end
+  def redirect
+  	x=params[:id]
+  	u=Url.find_by(shorturl:x)
+  	redirect_to URI.encode(u.longurl)
+  	
+  end
+
 
   
 end

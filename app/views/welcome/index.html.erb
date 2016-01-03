@@ -5,7 +5,6 @@
 	<div class="input-group">
 		  	
 		  		  <input type="text" class="form-control" ="url">
-		  	 
 	    	
 	    		<div class="input-group-addon btn btn-primary">short</div>
 	    	
@@ -20,12 +19,18 @@
 <script type="text/javascript">
 	
     $('.btn').click(function(){
-    	if($('input').val())
+    	if($('input').val() && is_valid_url($('input').val()))
     	$.getJSON('http://localhost:3000/short/create?text='+$('input').val(),function(result){    	
-    	$('#sol').text(result['shorturl']);
+    	//alert(result['shorturl']);	
+    	$('#sol').text('');
+    	$('#sol').wrapInner('<a href="'+result['shorturl']+'">'+'localhost'+result['shorturl']+'</a>');
     	});
+    else
+    	alert("Enter valid url")
     	
     });
-
+	function is_valid_url(url) {
+	    return /^(http(s)?:\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(url);
+	}
 
 </script>
