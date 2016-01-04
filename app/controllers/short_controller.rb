@@ -4,7 +4,11 @@ class ShortController < ApplicationController
   def create
 	  	@value=params[:text]
 	  	u=Url.new
+	  	if !@value.start_with?("http://") && !@value.start_with?("https://")
+	  	u.longurl="http://"+@value
+	    else
 	  	u.longurl=@value
+	  	end
 	  	
 	  	tmp=""
 	  	while true
@@ -21,8 +25,15 @@ class ShortController < ApplicationController
   end
   def redirect
   	x=params[:id]
+  	if x.length < 6 || x.length > 6
+  		redirect_to 'https://t.co'
+  	end
   	u=Url.find_by(shorturl:x)
+  	if u!=nil
   	redirect_to URI.encode(u.longurl)
+  	else
+  		redirect_to "/static_pages/fournotfour"
+  	end
   	
   end
 

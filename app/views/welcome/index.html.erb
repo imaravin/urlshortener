@@ -13,7 +13,7 @@
 <br>
 <div class="container">
 	<div class="jumbotron" id="sol">
-		solution here
+		
 	</div>
 </div>
 <script type="text/javascript">
@@ -23,7 +23,7 @@
     	$.getJSON('http://localhost:3000/short/create?text='+$('input').val(),function(result){    	
     	//alert(result['shorturl']);	
     	$('#sol').text('');
-    	$('#sol').wrapInner('<a href="'+result['shorturl']+'">'+'localhost'+result['shorturl']+'</a>');
+    	$('#sol').wrapInner('<a href="'+result['shorturl']+'">'+'localhost:3000/'+result['shorturl']+'</a>');
     	});
     else
     	alert("Enter valid url")
