@@ -19,17 +19,22 @@ class ShortController < ApplicationController
 	  		end
 	  	end
 	  	u.shorturl=tmp;
-
+	  	u.clickcount=0;
 	  	u.save
 	 	render :json => u 
   end
+
+
   def redirect
   	x=params[:id]
   	if x.length < 6 || x.length > 6
-  		redirect_to 'https://t.co'
+  		redirect_to '/static_pages/fournotfour'
   	end
   	u=Url.find_by(shorturl:x)
   	if u!=nil
+  	then
+  	u.clickcount=u.clickcount + 1
+  	u.save
   	redirect_to URI.encode(u.longurl)
   	else
   		redirect_to "/static_pages/fournotfour"

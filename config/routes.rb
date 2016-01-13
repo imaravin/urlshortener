@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   get '/:id' => 'short#redirect',  id: /([A-Za-z]){6}/
- get '/:id' => 'static_pages#fournotfour',  id: /([A-Za-z]){5}/
+ get '/:id' => 'static_pages#fournotfour',  id: /([A-Za-z]){1,5}/
   get '/:id' => 'static_pages#fournotfour',  id: /([A-Za-z]){7,}/
 
 
