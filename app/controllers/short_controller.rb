@@ -20,6 +20,7 @@ class ShortController < ApplicationController
 	  	end
 	  	u.shorturl=tmp;
 	  	u.clickcount=0;
+	  	u.ip=""
 	  	u.save
 	 	render :json => u 
   end
@@ -34,6 +35,7 @@ class ShortController < ApplicationController
   	if u!=nil
   	then
   	u.clickcount=u.clickcount + 1
+  	u.ip=u.ip+" "+request.remote_ip
   	u.save
   	redirect_to URI.encode(u.longurl)
   	else
