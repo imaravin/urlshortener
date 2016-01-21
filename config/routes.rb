@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
  # get 'static_pages/404'
 
-  get 'short/create'
+  #get 'short/create'
 
   get 'welcome/index'
 

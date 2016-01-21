@@ -1,6 +1,6 @@
 class ShortController < ApplicationController
-	ALPHABET ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMN\/%OPQRSTUVWXYZ0123456789".split(//)
-	attr_accessor:link
+	
+	
   def create
 	  	@value=params[:text]
 	  	u=Url.new
