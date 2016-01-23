@@ -1,0 +1,22 @@
+<br>
+<div class="container">
+	
+<% for i in @url %>
+<div class="jumbotron">
+	<%= i.longurl %>
+	<br>
+	<%= i.shorturl %>
+	<br>
+	<%= if(i.clickcount==nil )
+		then 
+		0
+	else
+		i.clickcount
+	end
+	 %>
+	<br>
+</div>
+<br>
+<% end %>
+
+</div>
