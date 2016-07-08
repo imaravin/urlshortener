@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-   
+
   get 'stats/:id' => 'stats#index'
 
   get '/stats' => 'stats#all'
 
   #statics
 
-   
+
   get 'static_pages/fournotfour'
 
- # get 'static_pages/404'
+ #get 'static_pages/404'
 
-  #get 'short/create'
+  get 'short/create'
 
   get 'welcome/index'
 
